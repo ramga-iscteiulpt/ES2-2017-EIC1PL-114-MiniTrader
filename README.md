@@ -8,6 +8,4 @@ Teresa Moniz, 68802, tmgmz-iscteiulpt
 João Lourenço, 66160, jrelo-iscteiulpt 
 
 Continuous integration video:
-
-
-
+https://www.youtube.com/watch?v=qdS7Ll8nQLc
