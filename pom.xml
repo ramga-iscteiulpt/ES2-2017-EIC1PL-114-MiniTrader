@@ -11,5 +11,8 @@
 	</properties>
 	<modules>
 		<module>Core</module>
+		<module>Europe</module>
+		<module>Asia</module>
+		<module>UnitedStates</module>
 	</modules>
 </project>
