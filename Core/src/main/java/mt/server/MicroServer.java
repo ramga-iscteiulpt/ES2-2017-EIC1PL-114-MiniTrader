@@ -29,6 +29,8 @@ import mt.filter.AnalyticsFilter;
  */
 public class MicroServer implements MicroTraderServer {
 	
+	/* xml_persistency */
+	
 	public static void main(String[] args) {
 		ServerComm serverComm = new AnalyticsFilter(new ServerCommImpl());
 		MicroTraderServer server = new MicroServer();
