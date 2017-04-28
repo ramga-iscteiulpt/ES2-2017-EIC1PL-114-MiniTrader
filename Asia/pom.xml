@@ -3,7 +3,7 @@
   <parent>
     <groupId>SimpleMavenProject</groupId>
     <artifactId>simplemavenproject</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2</version>
   </parent>
   <artifactId>Asia</artifactId>
   <name>Asia</name>
@@ -12,7 +12,7 @@
 		<dependency>
 			<groupId>SimpleMavenProject</groupId>
 			<artifactId>Core</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
 </project>
