@@ -1,5 +1,7 @@
 package mt.server;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -13,22 +15,30 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactoryConfigurationError;
+
+import org.xml.sax.SAXException;
+
 import mt.Order;
 import mt.comm.ServerComm;
 import mt.comm.ServerSideMessage;
 import mt.comm.impl.ServerCommImpl;
 import mt.exception.ServerException;
 import mt.filter.AnalyticsFilter;
+import mt.persistence.XMLSaver;
 
 /**
  * MicroTraderServer implementation. This class should be responsible
  * to do the business logic of stock transactions between buyers and sellers.
- * 
+ *
  * @author Group 78
  *
  */
 public class MicroServer implements MicroTraderServer {
-	
+
 	public static void main(String[] args) {
 		ServerComm serverComm = new AnalyticsFilter(new ServerCommImpl());
 		MicroTraderServer server = new MicroServer();
@@ -52,6 +62,8 @@ public class MicroServer implements MicroTraderServer {
 	 */
 	private Set<Order> updatedOrders;
 
+	private XMLSaver xmlSaver;
+
 	/**
 	 * Order Server ID
 	 */
@@ -67,6 +79,13 @@ public class MicroServer implements MicroTraderServer {
 		LOGGER.log(Level.INFO, "Creating the server...");
 		orderMap = new HashMap<String, Set<Order>>();
 		updatedOrders = new HashSet<>();
+		xmlSaver = new XMLSaver(new File("OrdersPersistence.xml"));
+		try {
+			xmlSaver.init();
+		} catch (TransformerConfigurationException | TransformerFactoryConfigurationError | SAXException | IOException
+				| ParserConfigurationException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -189,16 +208,16 @@ public class MicroServer implements MicroTraderServer {
 
 	/**
 	 * Process the user disconnection
-	 * 
+	 *
 	 * @param msg
 	 * 			  the message sent by the client
 	 */
 	private void processUserDisconnected(ServerSideMessage msg) {
 		LOGGER.log(Level.INFO, "Disconnecting client " + msg.getSenderNickname()+ "...");
-		
+
 		//remove the client orders
 		orderMap.remove(msg.getSenderNickname());
-		
+
 		// notify all clients of current unfulfilled orders
 		for (Entry<String, Set<Order>> entry : orderMap.entrySet()) {
 			Set<Order> orders = entry.getValue();
@@ -210,7 +229,7 @@ public class MicroServer implements MicroTraderServer {
 
 	/**
 	 * Process the new received order
-	 * 
+	 *
 	 * @param msg
 	 *            the message sent by the client
 	 */
@@ -218,15 +237,20 @@ public class MicroServer implements MicroTraderServer {
 		LOGGER.log(Level.INFO, "Processing new order...");
 
 		Order o = msg.getOrder();
-		
+
 		// save the order on map
 		saveOrder(o);
+		try {
+			xmlSaver.save(o);
+		} catch (TransformerException e) {
+			e.printStackTrace();
+		}
 
 		// if is buy order
 		if (o.isBuyOrder()) {
 			processBuy(msg.getOrder());
 		}
-		
+
 		// if is sell order
 		if (o.isSellOrder()) {
 			processSell(msg.getOrder());
@@ -242,30 +266,30 @@ public class MicroServer implements MicroTraderServer {
 		updatedOrders = new HashSet<>();
 
 	}
-	
+
 	/**
 	 * Store the order on map
-	 * 
+	 *
 	 * @param o
 	 * 			the order to be stored on map
 	 */
 	private void saveOrder(Order o) {
 		LOGGER.log(Level.INFO, "Storing the new order...");
-		
+
 		//save order on map
 		Set<Order> orders = orderMap.get(o.getNickname());
-		orders.add(o);		
+		orders.add(o);
 	}
 
 	/**
 	 * Process the sell order
-	 * 
+	 *
 	 * @param sellOrder
 	 * 		Order sent by the client with a number of units of a stock and the price per unit he wants to sell
 	 */
 	private void processSell(Order sellOrder){
 		LOGGER.log(Level.INFO, "Processing sell order...");
-		
+
 		for (Entry<String, Set<Order>> entry : orderMap.entrySet()) {
 			for (Order o : entry.getValue()) {
 				if (o.isBuyOrder() && o.getStock().equals(sellOrder.getStock()) && o.getPricePerUnit() >= sellOrder.getPricePerUnit()) {
@@ -273,12 +297,12 @@ public class MicroServer implements MicroTraderServer {
 				}
 			}
 		}
-		
+
 	}
-	
+
 	/**
 	 * Process the buy order
-	 * 
+	 *
 	 * @param buyOrder
 	 *          Order sent by the client with a number of units of a stock and the price per unit he wants to buy
 	 */
@@ -297,8 +321,8 @@ public class MicroServer implements MicroTraderServer {
 
 	/**
 	 * Process the transaction between buyer and seller
-	 * 
-	 * @param buyOrder 		Order sent by the client with a number of units of a stock and the price per unit he wants to buy 
+	 *
+	 * @param buyOrder 		Order sent by the client with a number of units of a stock and the price per unit he wants to buy
 	 * @param sellerOrder	Order sent by the client with a number of units of a stock and the price per unit he wants to sell
 	 */
 	private void doTransaction(Order buyOrder, Order sellerOrder) {
@@ -313,14 +337,14 @@ public class MicroServer implements MicroTraderServer {
 					- buyOrder.getNumberOfUnits());
 			buyOrder.setNumberOfUnits(EMPTY);
 		}
-		
+
 		updatedOrders.add(buyOrder);
 		updatedOrders.add(sellerOrder);
 	}
-	
+
 	/**
 	 * Notifies clients about a changed order
-	 * 
+	 *
 	 * @throws ServerException
 	 * 			exception thrown in the method notifyAllClients, in case there's no order
 	 */
@@ -330,7 +354,7 @@ public class MicroServer implements MicroTraderServer {
 			notifyAllClients(order);
 		}
 	}
-	
+
 	/**
 	 * Notifies all clients about a new order
 	 * 
@@ -344,16 +368,16 @@ public class MicroServer implements MicroTraderServer {
 			throw new ServerException("There was no order in the message");
 		}
 		for (Entry<String, Set<Order>> entry : orderMap.entrySet()) {
-			serverComm.sendOrder(entry.getKey(), order); 
+			serverComm.sendOrder(entry.getKey(), order);
 		}
 	}
-	
+
 	/**
 	 * Remove fulfilled orders
 	 */
 	private void removeFulfilledOrders() {
 		LOGGER.log(Level.INFO, "Removing fulfilled orders...");
-		
+
 		// remove fulfilled orders
 		for (Entry<String, Set<Order>> entry : orderMap.entrySet()) {
 			Iterator<Order> it = entry.getValue().iterator();
