@@ -141,6 +141,11 @@ public class AnalyticsFilter implements ServerComm {
 	public void sendError(String toNickname, String error) {
 		decoratedServerComm.sendError(toNickname, error);
 	}
+	
+	@Override
+	public void sendWarn(String toNickname, String warn) {
+		decoratedServerComm.sendWarn(toNickname, warn);
+	}
 
 	@Override
 	public boolean clientIsConnected(String nickname) {

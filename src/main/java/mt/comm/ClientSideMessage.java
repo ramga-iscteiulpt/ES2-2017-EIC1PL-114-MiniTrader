@@ -21,7 +21,12 @@ public interface ClientSideMessage {
 		/**
 		 * An error occurred.
 		 */
-		ERROR };
+		ERROR,
+		
+		/**
+		 * A warning message.
+		 */
+		WARN};
 		
 				
 	/**

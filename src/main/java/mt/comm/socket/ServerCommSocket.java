@@ -36,8 +36,8 @@ public class ServerCommSocket extends Thread {
 	/**
 	 * Auxiliary structure with information about connected users and its output
 	 * stream, in order to be possible to send client messages for the correct
-	 * client, based on its nickname. This structure is also used to validate
-	 * if a certain user, by its nickname, is or not connected.
+	 * client, based on its nickname. This structure is also used to validate if
+	 * a certain user, by its nickname, is or not connected.
 	 */
 	private Map<String, ObjectOutputStream> connectedUsers;
 
@@ -103,10 +103,13 @@ public class ServerCommSocket extends Thread {
 					// Creating a new thread to deal with receiving server
 					// messages sent by the clients.
 					String serverThreadName = "ServerCommThread-" + nickname;
-					ServerCommThread serverCommThread = new ServerCommThread(nickname, clientSocket, in, serverMessages, connectedUsers);
+					ServerCommThread serverCommThread = new ServerCommThread(nickname, clientSocket, in, serverMessages,
+							connectedUsers);
 					serverCommThread.setName(serverThreadName);
 					serverCommThread.start();
-					System.out.println(String.format("ServerComm >> Starting thread '%s' to handle messages received from client '%s'", serverThreadName, nickname));
+					System.out.println(String.format(
+							"ServerComm >> Starting thread '%s' to handle messages received from client '%s'",
+							serverThreadName, nickname));
 				}
 			}
 		} catch (IOException | ClassNotFoundException | InterruptedException e) {
@@ -119,7 +122,8 @@ public class ServerCommSocket extends Thread {
 				serverMessages.clear();
 				serverMessages = null;
 			} catch (IOException e) {
-				System.out.println("ServerComm >> An error has occurred while releasing resources due to : " + CommUtils.getCause(e));
+				System.out.println("ServerComm >> An error has occurred while releasing resources due to : "
+						+ CommUtils.getCause(e));
 			}
 		}
 	}
@@ -145,9 +149,11 @@ public class ServerCommSocket extends Thread {
 
 				// Sending the message to the client.
 				out.writeObject(message);
-				System.out.println(String.format("ServerComm >> Sending %s to client '%s'", message, receiversNickname));
+				System.out
+						.println(String.format("ServerComm >> Sending %s to client '%s'", message, receiversNickname));
 			} catch (IOException e) {
-				System.out.println("ServerComm >> An error has thrown while sending a client message due to : " + CommUtils.getCause(e));
+				System.out.println("ServerComm >> An error has thrown while sending a client message due to : "
+						+ CommUtils.getCause(e));
 			}
 		}
 	}
@@ -172,7 +178,34 @@ public class ServerCommSocket extends Thread {
 				out.writeObject(message);
 				System.out.println(String.format("ServerComm >> Sending %s to '%s'", message, toNickname));
 			} catch (IOException e) {
-				System.out.println("ServerComm >> An error has thrown while sending an error client message due to: " + CommUtils.getCause(e));
+				System.out.println("ServerComm >> An error has thrown while sending an error client message due to: "
+						+ CommUtils.getCause(e));
+			}
+		}
+	}
+
+	/**
+	 * This method is used to send an error message to a certain client.
+	 * 
+	 * @param toNickname
+	 *            Client's nickname.
+	 * @param warrning
+	 *            The warning message to be sent.
+	 */
+	public void sendWarn(String toNickname, String warning) {
+		// Retrieving the output stream associated to a certain client.
+		ObjectOutputStream out = connectedUsers.get(toNickname);
+		if (out != null) {
+			try {
+				// Creating a client error message based on an order.
+				ClientSideMessage message = CommUtils.createWarningMessage(warning);
+
+				// Sending the message to the client.
+				out.writeObject(message);
+				System.out.println(String.format("ServerComm >> Sending %s to '%s'", message, toNickname));
+			} catch (IOException e) {
+				System.out.println("ServerComm >> An error has thrown while sending an error client message due to: "
+						+ CommUtils.getCause(e));
 			}
 		}
 	}
@@ -199,12 +232,16 @@ public class ServerCommSocket extends Thread {
 		if (out != null) {
 			try {
 				CommUtils.releaseResources(out);
-				System.out.println(String.format("ServerComm >> The client '%s' has been disconnected by server", nickname));
+				System.out.println(
+						String.format("ServerComm >> The client '%s' has been disconnected by server", nickname));
 			} catch (IOException e) {
-				System.out.println(String.format("ServerComm >> An error has thrown while disconnecting client '%s' due to: %s", nickname, CommUtils.getCause(e)));
+				System.out.println(
+						String.format("ServerComm >> An error has thrown while disconnecting client '%s' due to: %s",
+								nickname, CommUtils.getCause(e)));
 			}
 		}
 	}
+
 }
 
 /**
@@ -239,7 +276,8 @@ class ServerCommThread extends Thread {
 	 */
 	private BlockingQueue<ServerSideMessage> serverMessages;
 
-	public ServerCommThread(String nickname, Socket clientSocket, ObjectInputStream in, final BlockingQueue<ServerSideMessage> serverMessages,
+	public ServerCommThread(String nickname, Socket clientSocket, ObjectInputStream in,
+			final BlockingQueue<ServerSideMessage> serverMessages,
 			final Map<String, ObjectOutputStream> connectedUsers) {
 		this.nickname = nickname;
 		this.clientSocket = clientSocket;
@@ -255,12 +293,14 @@ class ServerCommThread extends Thread {
 				if (connectedUsers.get(nickname) != null) {
 					ServerSideMessage message = (ServerSideMessage) in.readObject();
 					serverMessages.put(message);
-					System.out.println(String.format("ServerComm >> Processing %s from client '%s'", message, nickname));
+					System.out
+							.println(String.format("ServerComm >> Processing %s from client '%s'", message, nickname));
 					if (Type.DISCONNECTED.equals(message.getType())) {
 						String senderNickname = message.getSenderNickname();
 						ObjectOutputStream out = connectedUsers.remove(senderNickname);
 						out.close();
-						System.out.println(String.format("ServerComm >> Client '%s' is disconnected from server", senderNickname));
+						System.out.println(
+								String.format("ServerComm >> Client '%s' is disconnected from server", senderNickname));
 						break;
 					}
 				}
@@ -275,7 +315,8 @@ class ServerCommThread extends Thread {
 				connectedUsers = null;
 				serverMessages = null;
 			} catch (IOException e) {
-				System.out.println("ServerComm >> An error has occurred while releasing resources due to :" + CommUtils.getCause(e));
+				System.out.println("ServerComm >> An error has occurred while releasing resources due to :"
+						+ CommUtils.getCause(e));
 			}
 		}
 	}

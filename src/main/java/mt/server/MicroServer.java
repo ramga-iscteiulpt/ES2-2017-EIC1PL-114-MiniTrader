@@ -26,6 +26,7 @@ import mt.Order;
 import mt.comm.ServerComm;
 import mt.comm.ServerSideMessage;
 import mt.comm.impl.ServerCommImpl;
+import mt.exception.BusinessRuleException;
 import mt.exception.ServerException;
 import mt.filter.AnalyticsFilter;
 import mt.persistence.XMLSaver;
@@ -124,6 +125,8 @@ public class MicroServer implements MicroTraderServer {
 						}
 						notifyAllClients(msg.getOrder());
 						processNewOrder(msg);
+					} catch (BusinessRuleException e) {
+						serverComm.sendWarn(msg.getSenderNickname(), e.getMessage());
 					} catch (ServerException e) {
 						serverComm.sendError(msg.getSenderNickname(), e.getMessage());
 					}
@@ -233,7 +236,7 @@ public class MicroServer implements MicroTraderServer {
 	 * @param msg
 	 *            the message sent by the client
 	 */
-	private void processNewOrder(ServerSideMessage msg) throws ServerException {
+	private void processNewOrder(ServerSideMessage msg) throws ServerException, BusinessRuleException {
 		LOGGER.log(Level.INFO, "Processing new order...");
 
 		Order o = msg.getOrder();
