@@ -46,6 +46,14 @@ public interface ServerComm {
 	public void sendError(String toNickname, String error);
 
 	/**
+	 * Send a warning to a client.
+	 * 
+	 * @param toNickname nickname of the client.
+	 * @param warning warning to be sent to client.
+	 */
+	public void sendWarn(String toNickname, String warning);
+	
+	/**
 	 * Checks if a client with a certain nickname is currently connected.
 	 * 
 	 * @param nickname nickname of the client to check.
@@ -59,4 +67,7 @@ public interface ServerComm {
 	 * @param nickname nickname of the client to disconnect.
 	 */
 	public void disconnectClient(String nickname);
+
+
+
 }

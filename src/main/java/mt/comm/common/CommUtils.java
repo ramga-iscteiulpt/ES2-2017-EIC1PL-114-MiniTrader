@@ -97,6 +97,18 @@ public final class CommUtils {
 	public static ClientSideMessage createErrorMessage(String errorMessage) {
 		return new ClientSideMessageImpl(ClientSideMessage.Type.ERROR, errorMessage);
 	}
+	
+	/**
+	 * This method is used to create a warning client side message which is sent
+	 * to the client.
+	 * 
+	 * @param warningMessage
+	 *            warning message to be sent to the client.
+	 * @return An object representing a warning client side message.
+	 */
+	public static ClientSideMessage createWarningMessage(String warningMessage) {
+		return new ClientSideMessageImpl(ClientSideMessage.Type.WARN, warningMessage);
+	}
 
 	/**
 	 * This method is used to release resources such as sockets and streams.

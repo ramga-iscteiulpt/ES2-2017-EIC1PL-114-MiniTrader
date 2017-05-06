@@ -69,6 +69,11 @@ public class ServerCommImpl implements ServerComm {
 	}
 
 	@Override
+	public void sendWarn(String toNickname, String warning) {
+		serverSocket.sendWarn(toNickname, warning);
+	}
+	
+	@Override
 	public boolean clientIsConnected(String nickname) {
 		return serverSocket.isClientConnected(nickname);
 	}
@@ -77,4 +82,6 @@ public class ServerCommImpl implements ServerComm {
 	public void disconnectClient(String nickname) {
 		serverSocket.disconnectClient(nickname);
 	}
+
+	
 }
