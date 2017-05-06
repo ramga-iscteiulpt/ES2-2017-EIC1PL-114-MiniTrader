@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import mt.Order;
 import mt.client.Session;
 import mt.comm.ClientSideMessage;
+import mt.exception.BusinessRuleException;
 
 /**
  * Class responsible for keeping the business logic for the Micro Trader User
@@ -49,7 +50,7 @@ public class Controller {
 	 *         otherwise.
 	 */
 	public boolean isConnected() {
-		//TODO - Validar
+		// TODO - Validar
 		return !Session.loggedUser.isEmpty();
 	}
 
@@ -145,14 +146,16 @@ public class Controller {
 				if (message.getError().matches("The nickname '[\\w]*' is already in use and connected.")) {
 					this.disconnect();
 					throw new AuthenticationException(message.getError());
-				} else if (message.getError().matches("The connection for client '[\\w]*' was closed by the server.") 
-						||message.getError().matches("ConnectTimerLimit")) {
+				} else if (message.getError().matches("The connection for client '[\\w]*' was closed by the server.")
+						|| message.getError().matches("ConnectTimerLimit")) {
 					this.disconnect();
 					throw new ConnectionClosedException(message.getError());
 				}
 
 				throw new Exception(message.getError());
 
+			} else if (message.getType() == ClientSideMessage.Type.WARN) {
+				throw new BusinessRuleException(message.getError());
 			}
 		}
 	}
