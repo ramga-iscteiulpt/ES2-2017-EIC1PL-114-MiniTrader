@@ -127,8 +127,8 @@ public class MicroServerTest {
 		
 		ms.start(serverComm);
 		
-		verify(serverComm, atLeastOnce()).sendOrder("userB", Order.createSellOrder("userA", "MSFT", 5, 20.0) );
-		verify(serverComm, atLeastOnce()).sendOrder("userB", Order.createBuyOrder("userB", "MSFT", 0, 21.0) );
+		verify(serverComm, atLeastOnce()).sendOrder("userB", Order.createSellOrder("userA", "MSFT", 10, 20.0) );
+
 	}
 	
 	@Test
@@ -172,7 +172,7 @@ public class MicroServerTest {
 		when(serverComm.getNextMessage()).thenReturn(msg1).thenReturn(msg2).thenReturn(msg3).thenReturn(msg4).thenReturn(msg5).thenReturn(msg6).thenReturn(null);
 		ms.start(serverComm);
 		
-		verify(serverComm, atLeastOnce()).sendOrder("userA", Order.createSellOrder("userA", "MSFT", 5, 20.0));
+		verify(serverComm, atLeastOnce()).sendOrder("userA", Order.createSellOrder("userA", "MSFT", 10, 20.0));
 	}
 	
 	@Test
