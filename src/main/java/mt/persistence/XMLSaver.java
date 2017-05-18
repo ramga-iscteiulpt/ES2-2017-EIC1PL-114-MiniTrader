@@ -1,6 +1,5 @@
 package mt.persistence;
 
-
 import java.io.File;
 import java.io.IOException;
 
@@ -28,28 +27,20 @@ public class XMLSaver {
 	/*
 	 * FOR TEST
 	 * 
-
-	public static void main(String[] args) {
-		try {
-
-			Order order = Order.createBuyOrder("jrel", "EDP", 10, 10.5);
-
-			File inputFile = new File("OrdersPersistence.xml");
-			XMLSaver xml = new XMLSaver(inputFile).init();
-
-			xml.save(order);
-			xml.save(order);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
+	 * 
+	 * public static void main(String[] args) { try {
+	 * 
+	 * Order order = Order.createBuyOrder("jrel", "EDP", 10, 10.5);
+	 * 
+	 * File inputFile = new File("OrdersPersistence.xml"); XMLSaver xml = new
+	 * XMLSaver(inputFile).init();
+	 * 
+	 * xml.save(order); xml.save(order);
+	 * 
+	 * } catch (Exception e) { e.printStackTrace(); } }
+	 * 
 	 */
-	
 
-	
-	
 	private File file;
 	private Document document;
 	private Transformer transformer;
@@ -78,11 +69,11 @@ public class XMLSaver {
 		orderXML.setAttribute("Stock", order.getStock());
 		orderXML.setAttribute("Units", String.valueOf(order.getNumberOfUnits()));
 		orderXML.setAttribute("Price", String.valueOf(order.getPricePerUnit()));
-		
+
 		Element costumer = document.createElement("costumer");
 		costumer.appendChild(document.createTextNode(order.getNickname()));
 		orderXML.appendChild(costumer);
-		
+
 		return orderXML;
 	}
 
@@ -94,5 +85,4 @@ public class XMLSaver {
 		DOMSource source = new DOMSource(document);
 		transformer.transform(source, result);
 	}
-
 }

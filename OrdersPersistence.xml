@@ -1,3 +1,385 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <orders>
+<Order Id="2" Price="10.0" Stock="batata" Type="sel" Units="10">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="2" Price="10.0" Stock="EDP" Type="sel" Units="20">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="2" Price="100.0" Stock="Batata" Type="sel" Units="10">
+<costumer>Teresa</costumer>
+</Order>
+<Order Id="1" Price="10.0" Stock="Batata" Type="sel" Units="20">
+<costumer>Gomes</costumer>
+</Order>
+<Order Id="2" Price="10.0" Stock="Batata" Type="buy" Units="10">
+<costumer>Teresa</costumer>
+</Order>
+<Order Id="4" Price="10.0" Stock="Banana" Type="sel" Units="20">
+<costumer>Gomes</costumer>
+</Order>
+<Order Id="5" Price="10.0" Stock="Banana" Type="buy" Units="11">
+<costumer>Teresa</costumer>
+</Order>
+<Order Id="7" Price="10.0" Stock="Banana" Type="sel" Units="11">
+<costumer>Gomes</costumer>
+</Order>
+<Order Id="8" Price="10.0" Stock="Banana" Type="buy" Units="10">
+<costumer>Teresa</costumer>
+</Order>
+<Order Id="9" Price="10.0" Stock="Banana" Type="sel" Units="10">
+<costumer>Gomes</costumer>
+</Order>
+<Order Id="10" Price="10.0" Stock="Banana" Type="buy" Units="11">
+<costumer>Teresa</costumer>
+</Order>
+<Order Id="11" Price="10.0" Stock="Banana" Type="buy" Units="10">
+<costumer>Teresa</costumer>
+</Order>
+<Order Id="1" Price="20.0" Stock="MSFT" Type="sel" Units="10">
+<costumer>userA</costumer>
+</Order>
+<Order Id="3" Price="21.0" Stock="ISCTE" Type="buy" Units="15">
+<costumer>userB</costumer>
+</Order>
+<Order Id="4" Price="20.0" Stock="ISCTE" Type="sel" Units="10">
+<costumer>userA</costumer>
+</Order>
+<Order Id="5" Price="20.0" Stock="MSFT" Type="sel" Units="10">
+<costumer>userA</costumer>
+</Order>
+<Order Id="1" Price="20.0" Stock="MSFT" Type="sel" Units="10">
+<costumer>userA</costumer>
+</Order>
+<Order Id="3" Price="21.0" Stock="ISCTE" Type="buy" Units="15">
+<costumer>userB</costumer>
+</Order>
+<Order Id="4" Price="20.0" Stock="ISCTE" Type="sel" Units="10">
+<costumer>userA</costumer>
+</Order>
+<Order Id="5" Price="20.0" Stock="MSFT" Type="sel" Units="10">
+<costumer>userA</costumer>
+</Order>
+<Order Id="1" Price="20.0" Stock="MSFT" Type="sel" Units="10">
+<costumer>userA</costumer>
+</Order>
+<Order Id="3" Price="21.0" Stock="ISCTE" Type="buy" Units="15">
+<costumer>userB</costumer>
+</Order>
+<Order Id="4" Price="20.0" Stock="ISCTE" Type="sel" Units="10">
+<costumer>userA</costumer>
+</Order>
+<Order Id="5" Price="20.0" Stock="MSFT" Type="sel" Units="10">
+<costumer>userA</costumer>
+</Order>
+<Order Id="1" Price="20.0" Stock="MSFT" Type="sel" Units="10">
+<costumer>userA</costumer>
+</Order>
+<Order Id="3" Price="21.0" Stock="ISCTE" Type="buy" Units="15">
+<costumer>userB</costumer>
+</Order>
+<Order Id="4" Price="20.0" Stock="ISCTE" Type="sel" Units="10">
+<costumer>userA</costumer>
+</Order>
+<Order Id="5" Price="20.0" Stock="MSFT" Type="sel" Units="10">
+<costumer>userA</costumer>
+</Order>
+<Order Id="1" Price="20.0" Stock="MSFT" Type="sel" Units="10">
+<costumer>userA</costumer>
+</Order>
+<Order Id="3" Price="21.0" Stock="ISCTE" Type="buy" Units="15">
+<costumer>userB</costumer>
+</Order>
+<Order Id="4" Price="20.0" Stock="ISCTE" Type="sel" Units="10">
+<costumer>userA</costumer>
+</Order>
+<Order Id="5" Price="20.0" Stock="MSFT" Type="sel" Units="10">
+<costumer>userA</costumer>
+</Order>
+<Order Id="1" Price="20.0" Stock="MSFT" Type="sel" Units="10">
+<costumer>userA</costumer>
+</Order>
+<Order Id="3" Price="21.0" Stock="ISCTE" Type="buy" Units="15">
+<costumer>userB</costumer>
+</Order>
+<Order Id="4" Price="20.0" Stock="ISCTE" Type="sel" Units="10">
+<costumer>userA</costumer>
+</Order>
+<Order Id="5" Price="20.0" Stock="MSFT" Type="sel" Units="10">
+<costumer>userA</costumer>
+</Order>
+<Order Id="2" Price="1.0" Stock="EDP" Type="sel" Units="15">
+<costumer>Maria</costumer>
+</Order>
+<Order Id="3" Price="1.0" Stock="ABB" Type="sel" Units="35">
+<costumer>Maria</costumer>
+</Order>
+<Order Id="4" Price="1.0" Stock="CP" Type="sel" Units="45">
+<costumer>Maria</costumer>
+</Order>
+<Order Id="5" Price="1.0" Stock="REN" Type="sel" Units="55">
+<costumer>Maria</costumer>
+</Order>
+<Order Id="6" Price="1.0" Stock="ATT" Type="sel" Units="65">
+<costumer>Maria</costumer>
+</Order>
+<Order Id="7" Price="1.0" Stock="EDP" Type="buy" Units="15">
+<costumer>Maria</costumer>
+</Order>
+<Order Id="8" Price="1.0" Stock="EDP" Type="buy" Units="15">
+<costumer>Manuel</costumer>
+</Order>
+<Order Id="1" Price="10.0" Stock="bp" Type="sel" Units="10"/>
+<Order Id="1" Price="1.0" Stock="bp" Type="sel" Units="10">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="2" Price="1.0" Stock="bps" Type="sel" Units="10">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="3" Price="1.0" Stock="bpr" Type="sel" Units="10">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="4" Price="1.0" Stock="bpsr" Type="sel" Units="10">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="1" Price="12.0" Stock="edp" Type="sel" Units="20">
+<costumer>manuel</costumer>
+</Order>
+<Order Id="2" Price="1.0" Stock="fnac" Type="sel" Units="10">
+<costumer>manuel</costumer>
+</Order>
+<Order Id="3" Price="21.0" Stock="gas" Type="sel" Units="30">
+<costumer>manuel</costumer>
+</Order>
+<Order Id="4" Price="1.0" Stock="tata" Type="sel" Units="30">
+<costumer>manuel</costumer>
+</Order>
+<Order Id="5" Price="1223.0" Stock="gasolina" Type="sel" Units="50">
+<costumer>manuel</costumer>
+</Order>
+<Order Id="6" Price="1.0" Stock="heletrecidade" Type="sel" Units="10">
+<costumer>manuel</costumer>
+</Order>
+<Order Id="1" Price="1.0" Stock="edp" Type="sel" Units="10">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="2" Price="1.0" Stock="fnac" Type="sel" Units="10">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="3" Price="1.0" Stock="gas" Type="sel" Units="20">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="4" Price="1.0" Stock="pepe" Type="sel" Units="80">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="5" Price="1.0" Stock="fra" Type="sel" Units="10">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="6" Price="1.0" Stock="koop" Type="sel" Units="10">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="7" Price="1.0" Stock="hausd" Type="sel" Units="10">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="8" Price="1.0" Stock="edp" Type="buy" Units="10">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="1" Price="21.0" Stock="edp" Type="sel" Units="10">
+<costumer>manuel</costumer>
+</Order>
+<Order Id="2" Price="1.0" Stock="fnac" Type="sel" Units="10">
+<costumer>manuel</costumer>
+</Order>
+<Order Id="3" Price="1.0" Stock="caneta" Type="sel" Units="50">
+<costumer>manuel</costumer>
+</Order>
+<Order Id="1" Price="1.0" Stock="edp" Type="sel" Units="10">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="2" Price="2.0" Stock="bp" Type="sel" Units="20">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="3" Price="222.0" Stock="casa" Type="sel" Units="20">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="4" Price="2.0" Stock="gas" Type="sel" Units="10">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="5" Price="1.0" Stock="joaka" Type="sel" Units="30">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="1" Price="1.0" Stock="bgs" Type="sel" Units="10">
+<costumer>manuel</costumer>
+</Order>
+<Order Id="2" Price="1.0" Stock="kjaska" Type="sel" Units="12">
+<costumer>manuel</costumer>
+</Order>
+<Order Id="3" Price="1.0" Stock="kjsakja" Type="sel" Units="12">
+<costumer>manuel</costumer>
+</Order>
+<Order Id="1" Price="1.0" Stock="jash" Type="sel" Units="10">
+<costumer>nene</costumer>
+</Order>
+<Order Id="2" Price="1.0" Stock="opjsan" Type="sel" Units="10">
+<costumer>nene</costumer>
+</Order>
+<Order Id="3" Price="1.0" Stock="shdsd" Type="sel" Units="10">
+<costumer>nana</costumer>
+</Order>
+<Order Id="4" Price="1.0" Stock="jsdj" Type="sel" Units="20">
+<costumer>nene</costumer>
+</Order>
+<Order Id="5" Price="1.0" Stock="hcdishc" Type="sel" Units="10">
+<costumer>nana</costumer>
+</Order>
+<Order Id="6" Price="1.0" Stock="hdsiushd" Type="sel" Units="12">
+<costumer>nene</costumer>
+</Order>
+<Order Id="7" Price="1.0" Stock="oisdjos" Type="sel" Units="10">
+<costumer>nene</costumer>
+</Order>
+<Order Id="8" Price="1.0" Stock="kdksda" Type="sel" Units="12">
+<costumer>nene</costumer>
+</Order>
+<Order Id="10" Price="1.0" Stock="jash" Type="buy" Units="10">
+<costumer>nene</costumer>
+</Order>
+<Order Id="11" Price="1.0" Stock="jash" Type="sel" Units="10">
+<costumer>nene</costumer>
+</Order>
+<Order Id="12" Price="1.0" Stock="asas" Type="sel" Units="12">
+<costumer>nene</costumer>
+</Order>
+<Order Id="13" Price="1.0" Stock="edp" Type="sel" Units="10">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="14" Price="1.0" Stock="bp" Type="sel" Units="10">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="15" Price="1.0" Stock="gas" Type="sel" Units="10">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="16" Price="10.0" Stock="yas" Type="sel" Units="21">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="17" Price="2.0" Stock="fafa" Type="sel" Units="29">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="18" Price="1.0" Stock="tata" Type="sel" Units="19">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="19" Price="1.0" Stock="edp" Type="buy" Units="10">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="20" Price="1.0" Stock="edp" Type="sel" Units="10">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="1" Price="1.0" Stock="edp" Type="sel" Units="10">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="2" Price="1.0" Stock="bp" Type="sel" Units="10">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="3" Price="1.0" Stock="gas" Type="sel" Units="10">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="1" Price="1.0" Stock="edp" Type="sel" Units="10">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="2" Price="1.0" Stock="ep" Type="sel" Units="10">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="3" Price="1.0" Stock="hgs10" Type="sel" Units="10">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="4" Price="111.0" Stock="lkalks" Type="sel" Units="10">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="5" Price="1.0" Stock="jasbja" Type="sel" Units="101">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="6" Price="1.0" Stock="DIJD" Type="sel" Units="10">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="7" Price="1.0" Stock="edp" Type="buy" Units="10">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="8" Price="1.0" Stock="gas" Type="sel" Units="10">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="9" Price="1.0" Stock="wjefoi" Type="sel" Units="19">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="1" Price="1.0" Stock="edp" Type="sel" Units="12">
+<costumer>moniz</costumer>
+</Order>
+<Order Id="2" Price="12.0" Stock="gas" Type="sel" Units="19">
+<costumer>moniz</costumer>
+</Order>
+<Order Id="3" Price="1.0" Stock="fnac" Type="sel" Units="10">
+<costumer>moniz</costumer>
+</Order>
+<Order Id="4" Price="1.0" Stock="oleo" Type="sel" Units="10">
+<costumer>moniz</costumer>
+</Order>
+<Order Id="5" Price="1.0" Stock="loja" Type="sel" Units="10">
+<costumer>moniz</costumer>
+</Order>
+<Order Id="1" Price="20.0" Stock="MSFT" Type="sel" Units="10">
+<costumer>userA</costumer>
+</Order>
+<Order Id="2" Price="21.0" Stock="MSFT" Type="buy" Units="5">
+<costumer>userB</costumer>
+</Order>
+<Order Id="3" Price="21.0" Stock="ISCTE" Type="buy" Units="15">
+<costumer>userB</costumer>
+</Order>
+<Order Id="4" Price="20.0" Stock="ISCTE" Type="sel" Units="10">
+<costumer>userA</costumer>
+</Order>
+<Order Id="5" Price="20.0" Stock="MSFT" Type="sel" Units="10">
+<costumer>userA</costumer>
+</Order>
+<Order Id="6" Price="21.0" Stock="MSFT" Type="buy" Units="5">
+<costumer>userB</costumer>
+</Order>
+<Order Id="1" Price="1.0" Stock="t" Type="sel" Units="1">
+<costumer>marlene</costumer>
+</Order>
+<Order Id="1" Price="20.0" Stock="MSFT" Type="sel" Units="10">
+<costumer>userA</costumer>
+</Order>
+<Order Id="2" Price="21.0" Stock="MSFT" Type="buy" Units="10">
+<costumer>userB</costumer>
+</Order>
+<Order Id="3" Price="21.0" Stock="ISCTE" Type="buy" Units="15">
+<costumer>userB</costumer>
+</Order>
+<Order Id="4" Price="20.0" Stock="ISCTE" Type="sel" Units="10">
+<costumer>userA</costumer>
+</Order>
+<Order Id="5" Price="20.0" Stock="MSFT" Type="sel" Units="10">
+<costumer>userA</costumer>
+</Order>
+<Order Id="6" Price="21.0" Stock="MSFT" Type="buy" Units="10">
+<costumer>userB</costumer>
+</Order>
+<Order Id="1" Price="20.0" Stock="MSFT" Type="sel" Units="10">
+<costumer>userA</costumer>
+</Order>
+<Order Id="2" Price="21.0" Stock="MSFT" Type="buy" Units="10">
+<costumer>userB</costumer>
+</Order>
+<Order Id="3" Price="21.0" Stock="ISCTE" Type="buy" Units="15">
+<costumer>userB</costumer>
+</Order>
+<Order Id="4" Price="20.0" Stock="ISCTE" Type="sel" Units="10">
+<costumer>userA</costumer>
+</Order>
+<Order Id="5" Price="20.0" Stock="MSFT" Type="sel" Units="10">
+<costumer>userA</costumer>
+</Order>
+<Order Id="6" Price="21.0" Stock="MSFT" Type="buy" Units="10">
+<costumer>userB</costumer>
+</Order>
 </orders>

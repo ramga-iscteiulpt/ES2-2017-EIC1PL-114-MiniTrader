@@ -243,7 +243,7 @@ public class MicroServer implements MicroTraderServer {
 
 		Order o = msg.getOrder();
 		if (o.getNumberOfUnits() < 10) {
-			throw new BusinessRuleException("Ordem com unidades inferiores ao pretendido");
+			throw new BusinessRuleException("A single order quantity can never be lower than 10 units");
 		}
 
 		// save the order on map
@@ -298,7 +298,6 @@ public class MicroServer implements MicroTraderServer {
 	 */
 	private void processSell(Order sellOrder) {
 		LOGGER.log(Level.INFO, "Processing sell order...");
-
 		for (Entry<String, Set<Order>> entry : orderMap.entrySet()) {
 			for (Order o : entry.getValue()) {
 				if (o.isBuyOrder() && o.getStock().equals(sellOrder.getStock())
