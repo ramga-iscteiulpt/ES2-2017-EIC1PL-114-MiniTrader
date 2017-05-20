@@ -79,9 +79,9 @@ public class XMLSaver {
 		orderXML.setAttribute("Units", String.valueOf(order.getNumberOfUnits()));
 		orderXML.setAttribute("Price", String.valueOf(order.getPricePerUnit()));
 		
-		Element costumer = document.createElement("costumer");
-		costumer.appendChild(document.createTextNode(order.getNickname()));
-		orderXML.appendChild(costumer);
+//		Element costumer = document.createElement("costumer");
+//		costumer.appendChild(document.createTextNode(order.getNickname()));
+//		orderXML.appendChild(costumer);
 		
 		return orderXML;
 	}
