@@ -243,7 +243,7 @@ public class MicroServer implements MicroTraderServer {
 
 		Order o = msg.getOrder();
 		if (o.getNumberOfUnits() < 10) {
-			throw new BusinessRuleException("A single order quantity can never be lower than 10 units");
+			throw new BusinessRuleException("Business Rule 3 - A single order quantity can never be lower than 10 units");
 		}
 
 		// save the order on map
