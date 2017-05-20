@@ -81,7 +81,7 @@ public class MicroServer implements MicroTraderServer {
         LOGGER.log(Level.INFO, "Creating the server...");
         orderMap = new HashMap<String, Set<Order>>();
         updatedOrders = new HashSet<>();
-        xmlSaver = new XMLSaver(new File("OrdersPersistence.xml"));
+        xmlSaver = new XMLSaver(new File("SavedOrders.xml"));
         try {
             xmlSaver.init();
         } catch (TransformerConfigurationException | TransformerFactoryConfigurationError | SAXException | IOException
@@ -239,10 +239,9 @@ public class MicroServer implements MicroTraderServer {
         Order o = msg.getOrder();
 
 
-        if (o.isSellOrder())
-            for (Order order : orderMap.get(o.getNickname()))
-                if (o.getStock().equals(order.getStock()) && order.isBuyOrder())
-                    throw new BusinessRuleException("Business Rule 1 - You can't create stock sell orders that you're already buying");
+        for (Order order : orderMap.get(o.getNickname()))
+            if (o.getStock().equals(order.getStock()) && order.isBuyOrder() != o.isBuyOrder())
+                throw new BusinessRuleException("Business Rule 1 - Clients are not allowed to issue sell orders for their own buy orders and vice versa");
 
         int count = 0;
         if (o.isSellOrder())
@@ -251,11 +250,11 @@ public class MicroServer implements MicroTraderServer {
                     count++;
 
         if (count > 5)
-            throw new BusinessRuleException("Business Rule 2 - You can't create more than 5 sell orders");
+            throw new BusinessRuleException("Business Rule 2 - Sellers cannot have more than five sell orders unfulfilled");
 
 
         if (o.getNumberOfUnits() < 10)
-            throw new BusinessRuleException("Business Rule 3 - You can't create orders with less than 10 units" );
+            throw new BusinessRuleException("Business Rule 3 - A single order quantity can never be lower than 10 units");
 
         // save the order on map
         saveOrder(o);
