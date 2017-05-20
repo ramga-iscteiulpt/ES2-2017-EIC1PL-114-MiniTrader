@@ -600,4 +600,7 @@
 <Order Id="6" Price="21.0" Stock="MSFT" Type="buy" Units="10">
 <costumer>userB</costumer>
 </Order>
+<Order Id="1" Price="32.0" Stock="BP" Type="sel" Units="12">
+<costumer>Bia</costumer>
+</Order>
 </orders>

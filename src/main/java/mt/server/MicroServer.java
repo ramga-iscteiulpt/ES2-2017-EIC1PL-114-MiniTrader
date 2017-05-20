@@ -71,7 +71,8 @@ public class MicroServer implements MicroTraderServer {
         LOGGER.log(Level.INFO, "Creating the server...");
         orderMap = new HashMap<String, Set<Order>>();
         updatedOrders = new HashSet<>();
-        xmlSaver = new XMLSaver(new File("OrdersPersistence.xml"));
+        xmlSaver = new XMLSaver();
+//        xmlSaver = new XMLSaver(new File("OrdersPersistence.xml"));
         try {
             xmlSaver.init();
         } catch (TransformerConfigurationException | TransformerFactoryConfigurationError | SAXException | IOException
