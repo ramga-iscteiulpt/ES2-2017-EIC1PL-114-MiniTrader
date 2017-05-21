@@ -1,7 +1,7 @@
 package mt.server;
 
 import java.io.File;
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -15,12 +15,6 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerConfigurationException;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactoryConfigurationError;
-
-import org.xml.sax.SAXException;
 
 import mt.Order;
 import mt.comm.ServerComm;
@@ -30,6 +24,7 @@ import mt.exception.BusinessRuleException;
 import mt.exception.ServerException;
 import mt.filter.AnalyticsFilter;
 import mt.persistence.XMLSaver;
+
 
 /**
  * MicroTraderServer implementation. This class should be responsible
@@ -62,7 +57,6 @@ public class MicroServer implements MicroTraderServer {
      */
     private Set<Order> updatedOrders;
 
-    private XMLSaver xmlSaver;
 
     /**
      * Order Server ID
@@ -81,13 +75,9 @@ public class MicroServer implements MicroTraderServer {
         LOGGER.log(Level.INFO, "Creating the server...");
         orderMap = new HashMap<String, Set<Order>>();
         updatedOrders = new HashSet<>();
-        xmlSaver = new XMLSaver(new File("SavedOrders.xml"));
-        try {
-            xmlSaver.init();
-        } catch (TransformerConfigurationException | TransformerFactoryConfigurationError | SAXException | IOException
-                | ParserConfigurationException e) {
-            e.printStackTrace();
-        }
+        new XMLSaver(new File("SavedOrders.xml")).createFile();
+
+
     }
 
     @Override
@@ -258,11 +248,6 @@ public class MicroServer implements MicroTraderServer {
 
         // save the order on map
         saveOrder(o);
-        try {
-            xmlSaver.save(o);
-        } catch (TransformerException e) {
-            e.printStackTrace();
-        }
 
         // if is buy order
         if (o.isBuyOrder()) {
