@@ -239,7 +239,7 @@ public class MicroServer implements MicroTraderServer {
                 if (order.isSellOrder())
                     count++;
 
-        if (count > 5)
+        if (count >= 5)
             throw new BusinessRuleException("Business Rule 2 - Sellers cannot have more than five sell orders unfulfilled");
 
 
