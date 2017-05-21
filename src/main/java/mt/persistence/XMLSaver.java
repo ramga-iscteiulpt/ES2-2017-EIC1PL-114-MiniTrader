@@ -63,14 +63,9 @@ public class XMLSaver {
 	public XMLSaver init() throws TransformerConfigurationException, TransformerFactoryConfigurationError, SAXException,
 			IOException, ParserConfigurationException {
 
-        try (InputStream input = getClass().getClassLoader().getResourceAsStream(file.getName())) {
-            if (!file.exists())
-                Files.copy(input, file.toPath());
+		createFile();
 
-        } catch (IOException ignore) {
-        }
-
-        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 		document = dBuilder.parse(this.file);
 
@@ -78,6 +73,15 @@ public class XMLSaver {
 		transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 
 		return this;
+	}
+
+	public void createFile() {
+		try (InputStream input = getClass().getClassLoader().getResourceAsStream(file.getName())) {
+            if (!file.exists())
+                Files.copy(input, file.toPath());
+
+        } catch (IOException ignore) {
+        }
 	}
 
 	private Element toXML(Order order) {
