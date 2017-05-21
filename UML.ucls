@@ -3,26 +3,26 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="mt.server.MicroServer" project="ES2-2017-EIC1PL-114-MiniTrader" 
     file="/ES2-2017-EIC1PL-114-MiniTrader/src/main/java/mt/server/MicroServer.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="308" y="243"/>    
+    <position height="-1" width="-1" x="678" y="260"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="mt.persistence.XMLSaver" project="ES2-2017-EIC1PL-114-MiniTrader" 
+  <class id="2" language="java" name="mt.Order" project="ES2-2017-EIC1PL-114-MiniTrader" 
+    file="/ES2-2017-EIC1PL-114-MiniTrader/src/main/java/mt/Order.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1239" y="258"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="mt.persistence.XMLSaver" project="ES2-2017-EIC1PL-114-MiniTrader" 
     file="/ES2-2017-EIC1PL-114-MiniTrader/src/main/java/mt/persistence/XMLSaver.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="282" y="614"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="3" language="java" name="mt.Order" project="ES2-2017-EIC1PL-114-MiniTrader" 
-    file="/ES2-2017-EIC1PL-114-MiniTrader/src/main/java/mt/Order.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="869" y="241"/>    
+    <position height="-1" width="-1" x="194" y="260"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -31,20 +31,22 @@
   </class>  
   <association id="4">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="5" name="updatedOrders"/>      
-      <multiplicity id="6" minimum="0" maximum="2147483647"/>    
+      <attribute id="5" name="updatedOrders">        
+        <position height="0" width="0" x="370" y="17"/>      
+      </attribute>      
+      <multiplicity id="6" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="370" y="17"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
+    <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="7">    
-    <bendpoint x="280" y="456"/>    
-    <bendpoint x="282" y="457"/>    
     <end type="SOURCE" refId="1" navigable="false">      
       <attribute id="8" name="xmlSaver"/>      
       <multiplicity id="9" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
+    <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
